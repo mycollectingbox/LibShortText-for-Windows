@@ -15,8 +15,9 @@ D:\LibShortText-for-Windows> python text-train.py your_train_file your_saved_mod
 ```
 For predict phase
 ```shell
-D:\LibShortText-for-Windows> python text-predict.py [options] your_test_file your_saved_model_dir output
+D:\LibShortText-for-Windows> python text-predict.py your_test_file your_saved_model_dir output
 ```
+Refer to documentation https://www.csie.ntu.edu.tw/~cjlin/libshorttext/doc/libshorttext.html about usage of options
 
 ## Other Issue
 If you encounter the following problem:
