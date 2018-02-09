@@ -26,5 +26,5 @@ If you encounter the following problem:
 ```
 Please refer to: http://www.zoearthmoon.net/blog/program/item/1328.html
 
-## Contact Infomation
+## Contact Information
 If you have any questions about this toolkit please feel free to contact: r01222022@ntu.edu.tw
