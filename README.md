@@ -25,3 +25,6 @@ If you encounter the following problem:
 無法啟動程式，因為你的電腦遺失VCRUNTIME140.dll。請嘗試重新安裝以修正這個問題。
 ```
 Please refer to: http://www.zoearthmoon.net/blog/program/item/1328.html
+
+## Contact Infomation
+If you have any questions about this toolkit please feel free to contact: r01222022@ntu.edu.tw
