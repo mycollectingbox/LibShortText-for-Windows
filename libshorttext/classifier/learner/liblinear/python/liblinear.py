@@ -6,7 +6,10 @@ from os import path
 import sys
 
 # For unix the prefix 'lib' is not considered.
-liblinear = CDLL(path.join(path.dirname(path.abspath(__file__)), '../liblinear.dll')) # '../liblinear.so.1'
+if sizeof(c_voidp) == 4:
+	liblinear = CDLL(path.join(path.dirname(path.abspath(__file__)), '../liblinear.dll')) # '../liblinear.so.1'
+elif sizeof(c_voidp) == 8:
+	liblinear = CDLL(path.join(path.dirname(path.abspath(__file__)), '../x64/liblinear.dll')) # '../liblinear.so.1'
 
 # Construct constants
 SOLVER_TYPE = ['L2R_LR', 'L2R_L2LOSS_SVC_DUAL', 'L2R_L2LOSS_SVC', 'L2R_L1LOSS_SVC_DUAL',\

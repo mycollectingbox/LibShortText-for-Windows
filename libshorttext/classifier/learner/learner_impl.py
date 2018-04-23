@@ -17,7 +17,10 @@ else :
 	import cPickle
 	from itertools import izip
 
-util = CDLL(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'util.dll')) # 'util.so.1'
+if sizeof(c_voidp) == 4:
+	util = CDLL(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'util.dll')) # 'util.so.1'
+elif sizeof(c_voidp) == 8:
+	util = CDLL(os.path.join(os.path.dirname(os.path.abspath(__file__)), './x64/util.dll')) # 'util.so.1'
 
 LIBLINEAR_HOME = os.environ.get('LIBLINEAR_HOME') or os.path.dirname(os.path.abspath(__file__)) + '/liblinear'
 sys.path = [LIBLINEAR_HOME, LIBLINEAR_HOME + '/python'] + sys.path
