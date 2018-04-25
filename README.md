@@ -19,6 +19,27 @@ D:\LibShortText-for-Windows> python text-predict.py your_test_file your_saved_mo
 ```
 Refer to documentation https://www.csie.ntu.edu.tw/~cjlin/libshorttext/doc/libshorttext.html about usage of options
 
+## Usage Example
+If you simply want to know whether this program can run on your system, first execute the command
+```shell
+D:\LibShortText-for-Windows> python text-train.py ./demo/train_file
+```
+Then, you will have a result like the following one.
+```shell
+****
+optimization finished, #iter = 9
+Objective value = -986.846002
+nSV = 18969
+```
+Finally, run the command below for self-test:
+```shell
+D:\LibShortText-for-Windows> python text-predict.py ./demo/train_file train_file.model output
+```
+In console output, you should see the result like this
+```shell
+Accuracy = 99.7600% (4988/5000)
+```
+
 ## Other Issue
 If you encounter the following problem:
 ```shell
@@ -27,4 +48,4 @@ If you encounter the following problem:
 Please refer to: http://www.zoearthmoon.net/blog/program/item/1328.html
 
 ## Contact Information
-If you have any questions about this toolkit please feel free to contact: r01222022@ntu.edu.tw
+If you have any questions about this toolkit please feel free to contact: mycollectingbox@gmail.com
