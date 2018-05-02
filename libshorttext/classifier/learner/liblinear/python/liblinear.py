@@ -4,12 +4,20 @@ from ctypes import *
 from ctypes.util import find_library
 from os import path
 import sys
+import platform
 
-# For unix the prefix 'lib' is not considered.
-if sizeof(c_voidp) == 4:
-	liblinear = CDLL(path.join(path.dirname(path.abspath(__file__)), '../liblinear.dll')) # '../liblinear.so.1'
-elif sizeof(c_voidp) == 8:
-	liblinear = CDLL(path.join(path.dirname(path.abspath(__file__)), '..', 'x64', 'liblinear.dll')) # '../liblinear.so.1'
+platformName = platform.system()
+
+if platformName == 'Windows':
+	if sizeof(c_voidp) == 4:
+		liblinear = CDLL(path.join(path.dirname(path.abspath(__file__)), '../liblinear.dll')) # '../liblinear.so.1'
+	elif sizeof(c_voidp) == 8:
+		liblinear = CDLL(path.join(path.dirname(path.abspath(__file__)), '../x64/liblinear.dll')) # '../liblinear.so.1'
+elif platformName == 'Linux':
+	# For unix the prefix 'lib' is not considered.
+	liblinear = CDLL(path.join(path.dirname(path.abspath(__file__)), '../liblinear.so.1'))
+elif platformName == 'Darwin':
+	liblinear = CDLL(path.join(path.dirname(path.abspath(__file__)), '../liblinear.so.1'))
 
 # Construct constants
 SOLVER_TYPE = ['L2R_LR', 'L2R_L2LOSS_SVC_DUAL', 'L2R_L2LOSS_SVC', 'L2R_L1LOSS_SVC_DUAL',\
