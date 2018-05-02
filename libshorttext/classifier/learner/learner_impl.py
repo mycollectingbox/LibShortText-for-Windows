@@ -22,9 +22,12 @@ platformName = platform.system()
 
 if platformName == 'Windows':
 	if sizeof(c_voidp) == 4:
-		util = CDLL(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'util.dll')) # 'util.so.1'
+		util = CDLL(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'util_x86.dll'))
 	elif sizeof(c_voidp) == 8:
-		util = CDLL(os.path.join(os.path.dirname(os.path.abspath(__file__)), './x64/util.dll')) # 'util.so.1'
+		try:
+			util = CDLL(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'util_x64.dll'))
+		except:
+			util = CDLL(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'util_x64_MT.dll'))
 elif platformName == 'Linux':
 	util = CDLL(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'util.so.1'))
 elif platformName == 'Darwin':

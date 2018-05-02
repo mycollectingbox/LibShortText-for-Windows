@@ -10,9 +10,12 @@ platformName = platform.system()
 
 if platformName == 'Windows':
 	if sizeof(c_voidp) == 4:
-		stemmer = CDLL(os.path.join(os.path.dirname(__file__),'./porter.dll'))  # './porter.so.1'
+		stemmer = CDLL(os.path.join(os.path.dirname(__file__),'./porter_x86.dll'))
 	elif sizeof(c_voidp) == 8:
-		stemmer = CDLL(os.path.join(os.path.dirname(__file__),'./x64/porter.dll'))  # './porter.so.1'
+		try:
+			stemmer = CDLL(os.path.join(os.path.dirname(__file__),'./porter_x64.dll'))
+		except:
+			stemmer = CDLL(os.path.join(os.path.dirname(__file__),'./porter_x64_MT.dll'))
 elif platformName == 'Linux':
 	stemmer = CDLL(os.path.join(os.path.abspath(os.path.dirname(__file__)), './porter.so.1'))
 elif platformName == 'Darwin':

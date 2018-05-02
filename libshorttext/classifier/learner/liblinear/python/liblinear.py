@@ -10,9 +10,12 @@ platformName = platform.system()
 
 if platformName == 'Windows':
 	if sizeof(c_voidp) == 4:
-		liblinear = CDLL(path.join(path.dirname(path.abspath(__file__)), '../liblinear.dll')) # '../liblinear.so.1'
+		liblinear = CDLL(path.join(path.dirname(path.abspath(__file__)), '../liblinear_x86.dll'))
 	elif sizeof(c_voidp) == 8:
-		liblinear = CDLL(path.join(path.dirname(path.abspath(__file__)), '../x64/liblinear.dll')) # '../liblinear.so.1'
+		try:
+			liblinear = CDLL(path.join(path.dirname(path.abspath(__file__)), '../liblinear_x64.dll'))
+		except:
+			liblinear = CDLL(path.join(path.dirname(path.abspath(__file__)), '../liblinear_x64_MT.dll'))
 elif platformName == 'Linux':
 	# For unix the prefix 'lib' is not considered.
 	liblinear = CDLL(path.join(path.dirname(path.abspath(__file__)), '../liblinear.so.1'))
